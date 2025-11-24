@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проєкт: Вирощування кристалів</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #d0eaff, #f5f9ff);
+      color: #222;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: #4fa3ff;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 800;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+
+    .step {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s ease forwards;
+      perspective: 800px;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.25s; }
+    .step:nth-child(3) { animation-delay: 0.4s; }
+    .step:nth-child(4) { animation-delay: 0.55s; }
+    .step:nth-child(5) { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step h2 {
+      margin-top: 0;
+      font-size: 26px;
+      color: #0077cc;
+    }
+
+    .step p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .extra-info {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 15px;
+      border-left: 4px solid #4fa3ff;
+      background: #eef7ff;
+      border-radius: 8px;
+      color: #1f6feb;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      background: #4fa3ff;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      margin-top: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background: #2e8ae6;
+      transform: scale(1.07);
+    }
+
+    .toggle-img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .gallery img:hover {
+      transform: rotateY(18deg) scale(1.05);
+      transition: transform 0.4s;
+    }
+
+    .theme-dark {
+      background: #0d1117;
+      color: #e6edf3;
+    }
+
+    .theme-dark header {
+      background: #1f6feb;
+    }
+
+    .theme-dark .extra-info {
+      color: #161b22;
+    }
+    .theme-dark .step {
+      background: #161b22;
+      color: #e6edf3;
+    }
+
+    .theme-btn {
+      margin-top:15px;
+      padding:10px 16px;
+      border:none;
+      border-radius:10px;
+      background:#fff;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background: #eef7ff;
+      color: #333;
+      border-top: 2px solid #4fa3ff;
+    }
+
+    .theme-dark footer {
+      background: #161b22;
+      color: #e6edf3;
+      border-top: 2px solid #1f6feb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Вирощування кристалів у домашніх умовах</h1>
+    <p>Навчальний проєкт з природничих наук</p>
+    <button class="theme-btn" onclick="toggleTheme()">Перемкнути тему</button>
+  </header>
+
+  <div class="container">
+
+    <h2 style="text-align:center; font-size:30px; color:#0077cc;">Галерея кристалів</h2>
+
+<button class="toggle-btn" onclick="toggleGallery()" id="galleryBtn">Показати зображення</button>
+
+<div class="gallery" id="gallery" style="display: none;">
+  <img src="photo_5260219676787149623_y.jpg" alt="Кристал 1">
+  <img src="photo_5260696207703608839_y.jpg" alt="Кристал 2">
+  <img src="photo_5260696207703608840_y.jpg" alt="Кристал 3">
+</div>
+
+
+    <div class="step">
+      <h2>🌊 Крок 1: Підготовка посуду та води</h2>
+      <p>Беремо чисту склянку або банку та наливаємо в неї холодну воду.</p>
+      <button class="toggle-btn" onclick="toggleInfo(1)">Детальніше</button>
+      <div id="info1" class="extra-info">Чим чистіший посуд — тим красивіші кристали. Бажано використовувати прозору тару.</div>
+      <img class="toggle-img" onclick="toggleImage(this)" src="photo_5253660312538385449_y (1).jpg" alt="Посуд і вода" />
+    </div>
+
+    <div class="step">
+      <h2>🧂 Крок 2: Створення першого перенасичення</h2>
+      <p>Додаємо до холодної води багато солі або мідного купоросу та активно розмішуємо.</p>
+      <button class="toggle-btn" onclick="toggleInfo(2)">Детальніше</button>
+      <div id="info2" class="extra-info">Перенасичення — коли вода вже не може розчиняти більше речовини.</div>
+      <img class="toggle-img" onclick="toggleImage(this)" src="photo_5253660312538385452_y (1).jpg" alt="Додавання солі" />
+    </div>
+
+    <div class="step">
+      <h2>🔥 Крок 3: Нагрівання розчину</h2>
+      <p>Розчин підігріваємо, щоб розчинність збільшилась, і додаємо ще солі.</p>
+      <button class="toggle-btn" onclick="toggleInfo(3)">Детальніше</button>
+      <div id="info3" class="extra-info">Гаряча вода може взяти набагато більше речовини, ніж холодна.</div>
+      <img class="toggle-img" onclick="toggleImage(this)" src="photo_5253660312538385450_y.jpg" alt="Нагрівання" />
+    </div>
+
+    <div class="step">
+      <h2>❄️ Крок 4: Повне перенасичення та охолодження</h2>
+      <p>Даємо розчину охолонути — тепер надлишок речовини почне випадати у вигляді кристалів.</p>
+      <button class="toggle-btn" onclick="toggleInfo(4)">Детальніше</button>
+      <div id="info4" class="extra-info">Процес кристалізації починається саме під час охолодження.</div>
+      <img class="toggle-img" onclick="toggleImage(this)" src="photo_5257967876973465955_y.jpg" alt="Охолодження" />
+    </div>
+
+    <div class="step">
+      <h2>🪢 Крок 5: Створення «центру росту»</h2>
+      <p>Опускаємо в розчин нитку або паличку — кристал почне рости прямо на ній.</p>
+      <button class="toggle-btn" onclick="toggleInfo(5)">Детальніше</button>
+      <div id="info5" class="extra-info">Нитка потрібна, щоб кристал мав місце, від якого почне формуватись.</div>
+      <img class="toggle-img" onclick="toggleImage(this)" src="photo_5260696207703608839_y.jpg" alt="Формування кристалів" />
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Вирощування кристалів. Природничі науки.
+  </footer>
+
+  <script>
+    function toggleInfo(id) {
+      const block = document.getElementById("info" + id);
+      block.style.display = block.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleImage(img) {
+      if(img.style.display !== "none"){
+        img.style.display = "none";
+        const btn = document.createElement("button");
+        btn.innerText = "Показати зображення";
+        btn.className = "toggle-btn";
+        btn.onclick = () => { img.style.display = "block"; btn.remove(); };
+        img.parentNode.insertBefore(btn, img);
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("theme-dark");
+    }
+    function toggleGallery() {
+  const gallery = document.getElementById("gallery");
+  const btn = document.getElementById("galleryBtn");
+
+  if (gallery.style.display === "none") {
+    gallery.style.display = "flex";
+    btn.innerText = "Сховати зображення";
+  } else {
+    gallery.style.display = "none";
+    btn.innerText = "Показати зображення";
+  }
+}
+
+  </script>
+</body>
+</html>
