@@ -222,6 +222,16 @@
       <div id="info5" class="extra-info">Нитка потрібна, щоб кристал мав місце, від якого почне формуватись.</div>
       <img class="toggle-img" onclick="toggleImage(this)" src="photo_5260696207703608839_y.jpg" alt="Формування кристалів" />
     </div>
+    <div class="step">
+<button class="toggle-btn" onclick="toggleMany(['info6','info7','info8'])">
+  великі цитати
+</button>
+
+<div class="extra-info" id="info6">Якщо ви загубились, то йдіть додому.</div>
+<div class="extra-info" id="info7">Якщо хочеш змін - міняй хоч щось, навіть шкарпетки.</div>
+<div class="extra-info" id="info8">Розумний не той хто читає, а той хто менше говорить.</div>
+
+    </div>
 
   </div>
 
@@ -260,6 +270,17 @@
     gallery.style.display = "none";
     btn.innerText = "Показати зображення";
   }
+}
+
+function toggleMany(ids) {
+  let anyVisible = ids.some(id => {
+    return document.getElementById(id).style.display === "block";
+  });
+
+  ids.forEach(id => {
+    let el = document.getElementById(id);
+    el.style.display = anyVisible ? "none" : "block";
+  });
 }
 
   </script>
